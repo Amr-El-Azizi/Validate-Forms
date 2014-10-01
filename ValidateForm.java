@@ -119,6 +119,41 @@ class TextComponentFrame extends JFrame
                     return true;
                     return false;
                 }
+                
+                private boolean phoneCheck(String str)
+                {
+                    if(str.length()<10)
+                    return false;
+                    if(isAllNumeric(str.substring(0,3))!=true)
+                    return false;
+                    if(isAllNumeric(str.substring(4,7))!=true)
+                    return false;
+                    if(isAllNumeric(str.substring(8))!=true)
+                    return false;
+                    if(str.charAt(3)!='-'||str.charAt(7)!='-')
+                    return false;
+                    return true;
+                }
+                
+                private boolean emailCheck(String str)
+                {
+                    int at = 0;
+                    for(int i = 0; i<str.length()-1; i++)
+                    {
+                        if(str.charAt(i)=='@')
+                        {
+                            at=1;
+                            i = at;
+                        }
+                        if(at==1 && str.charAt(i)=='.')
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                
+
              public void actionPerformed(ActionEvent event)
             {
                 char[] cPssword  = passwordField.getPassword();
@@ -129,7 +164,6 @@ class TextComponentFrame extends JFrame
                 
     //*********************  Here is where the action is performed!!!!              
                 
-                
                 String cName = personName.getText() ;
                 String cEmail = emailField.getText();
                 String cZipCode = zipCode.getText();
@@ -139,14 +173,27 @@ class TextComponentFrame extends JFrame
                 
                 boolean a = true;
                 if(isAllAlpha(cName) == false || cName.length()<3)
-                   textArea.append("Is that really your name?");
+                   textArea.append("Is that really your name? (hint: R2D2 is not a valid name.");
                 if(passCheck(cPassWord) == false && cPassWord.length() < 4)
-                   textArea.append("Your password needs a lower case letter, upper case letter and a number and most be at least four characters long. It also cannot be your name");
-                if(isAllNumeric(cZipCode)==false)
-                   textArea.append("Your Zip code is not in the known regions of the Universe... Sorry");
-                if(isAllNumeric(cbirthDate)==false)
-                   textArea.append("You don't exist");
-
+                   textArea.append("Your password needs a lower case letter, upper case letter and a number and most be at least four characters long. It also cannot be your name... BENJAMIN");
+                if(isAllNumeric(cZipCode)==false && cZipCode.length()<6 && cZipCode.length()>2)
+                   textArea.append("Your Zip code is not in the known regions of the Universe... Sorry.");             
+                   try{
+                       int bDayAsInt = Integer.parseInt( cbirthDate);
+                        if(bDayAsInt<1880 || bDayAsInt>2004)
+                        {
+                             textArea.append("Please be born sometime reasonable...");
+                        }
+                
+                   }
+                catch( java.lang.NumberFormatException e){
+                    textArea.append("Birthdays are in numbers you know?");
+                }
+                if(emailCheck(cEmail)==false)
+                {
+                    textArea.append("Your email is invalid, please give a real one.");
+                }
+               
             
               
                
