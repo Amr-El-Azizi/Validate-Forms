@@ -122,7 +122,7 @@ class TextComponentFrame extends JFrame
                 
                 private boolean phoneCheck(String str)
                 {
-                    if(str.length()<11)
+                    if(str.length()<12)
                     return false;
                     if(isAllNumeric(str.substring(0,3))!=true)
                     return false;
@@ -143,7 +143,6 @@ class TextComponentFrame extends JFrame
                         if(str.charAt(i)=='@')
                         {
                             at=1;
-                            i = at;
                         }
                         if(at==1 && str.charAt(i)=='.')
                         {
@@ -170,72 +169,47 @@ class TextComponentFrame extends JFrame
                 String cbirthDate = birthDate.getText();
                 String cPhone = phone.getText(); 
                 String cPassWord = new String(cPssword);
-                                   int testCase = 1;
-                
-                if(testCase ==1)
-                    {
-                        cName= "Mr. M0rris1";
-                        cEmail = "mr.morris" ;
-                        cbirthDate= "-2";
-                        cPassWord= cName;
-                        cPhone = "1234-321-342";
-                        cZipCode = "122.2";
-                }
-			else if(testCase ==2)
-				{
-				cName= "M";
-                        cEmail = "mr.mo@rris" ;
-                        cbirthDate= "1500";
-                        cPassWord= "a";
-                        cZipCode = "105";
-                        cPhone = "122-432-12a";
-                }
+
                     
-                if(testCase > -1)      
-                    {
-                     personName.setText(cName );
-                    emailField.setText(cEmail);
-                    birthDate.setText(cbirthDate) ;
-                    zipCode.setText(cZipCode);
-                    
-                    
-                    }
                 boolean a = true;
+                
+
+                
                 if(isAllAlpha(cName) == false || cName.length()<3)
                    textArea.append("Is that really your name? (hint: R2D2 is not a valid name).");
-                if(passCheck(cPassWord) == false || cPassWord.equals(cName))
+                   
+                if(passCheck(cPassWord) == false)
                    textArea.append("\n Your password needs a lower case letter, upper case letter and a number");
+                   
                 if(cPassWord.length()<4)
                    textArea.append("\n Passwords usually have a length of at least 4, unless you want to be hacked easily. Your choice.");
+                   
                 if(cPassWord.equals(cName))
                    textArea.append("\n Your name is not a valid/safe password... BENJAMIN");
+                   
                 if(emailCheck(cEmail)==false)
-                {
                     textArea.append("\n Your email is invalid, please give a real one.");
-                }
+                
                 if(isAllNumeric(cZipCode)==false || cZipCode.length()<6 || cZipCode.length()>2)
                    textArea.append("\n Your Zip code is not in the known regions of the Universe... Sorry.");             
+                   
                    try{
                        int bDayAsInt = Integer.parseInt( cbirthDate);
                         if(bDayAsInt<1880 || bDayAsInt>2004)
-                        {
                              textArea.append("\n Please be born sometime reasonable...");
-                        }
                 
                    }
                 catch( java.lang.NumberFormatException e){
                     textArea.append("\n Birthdays are in numbers you know?");
                 }
+                
                 if(phoneCheck(cPhone)==false)
-                {
                     textArea.append("\n Yellow... Oh wait, your number doesn't exist");
-                }
+                
+                if(textArea.getText().length()==0)
+                    textArea.append("Thank You");
 
-               
-            
-              
-               
-               
+                
               //
 //********************************************************************************
    //    ****************************       CHANGE CODE BELOW AT OWN RISK    ******************************* 
