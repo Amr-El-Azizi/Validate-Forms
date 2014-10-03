@@ -1,5 +1,5 @@
 #BlueJ package file
-package.editor.height=712
+package.editor.height=687
 package.editor.width=672
 package.editor.x=800
 package.editor.y=0
@@ -7,10 +7,10 @@ package.numDependencies=0
 package.numTargets=1
 package.showExtends=true
 package.showUses=true
-target1.editor.height=880
-target1.editor.width=1608
-target1.editor.x=-4
-target1.editor.y=-4
+target1.editor.height=872
+target1.editor.width=1598
+target1.editor.x=1
+target1.editor.y=0
 target1.height=50
 target1.name=ValidateForm
 target1.naviview.expanded=false

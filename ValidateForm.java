@@ -72,10 +72,22 @@ class TextComponentFrame extends JFrame
          {
                 private boolean isAllAlpha(String str){
                     boolean a = true;
-                    for(int i = 0; i < str.length(); i ++)
+                    int space = 0;
+                    int dash = 0;
+                    for(int i = 0; i < str.length() && a == false; i ++)
                     {
-                        if(Character.isLetter(str.charAt(i)) || str.charAt(i)==' ' || str.charAt(i)=='-')
+                        if(Character.isLetter(str.charAt(i)))
                         a = true;
+                        else if(str.charAt(i)==' ' && space !=1)
+                        {
+                            a = true;
+                            space ++;
+                        }
+                        else if(str.charAt(i)=='-' && dash !=1)
+                        {
+                            a = true;
+                            dash ++;
+                        }
                         else
                         {
                         a = false;
