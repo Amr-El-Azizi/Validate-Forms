@@ -173,7 +173,7 @@ class TextComponentFrame extends JFrame
                     
                 boolean a = true;
                 
-
+                textArea.setText("");
                 
                 if(isAllAlpha(cName) == false || cName.length()<3)
                    textArea.append("Is that really your name? (hint: R2D2 is not a valid name).");
@@ -190,7 +190,7 @@ class TextComponentFrame extends JFrame
                 if(emailCheck(cEmail)==false)
                     textArea.append("\n Your email is invalid, please give a real one.");
                 
-                if(isAllNumeric(cZipCode)==false || cZipCode.length()<6 || cZipCode.length()>2)
+                if(isAllNumeric(cZipCode)==false || cZipCode.length()>5 || cZipCode.length()<3)
                    textArea.append("\n Your Zip code is not in the known regions of the Universe... Sorry.");             
                    
                    try{
