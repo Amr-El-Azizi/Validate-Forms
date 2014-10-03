@@ -74,7 +74,7 @@ class TextComponentFrame extends JFrame
                     boolean a = true;
                     for(int i = 0; i < str.length(); i ++)
                     {
-                        if(Character.isLetter(str.charAt(i)))
+                        if(Character.isLetter(str.charAt(i)) || str.charAt(i)==' ' || str.charAt(i)=='-')
                         a = true;
                         else
                         {
@@ -89,7 +89,9 @@ class TextComponentFrame extends JFrame
                 int dot = 0;
                 for(int i = 0; i<str.length()&&dot<2; i ++){
                     if(m.indexOf(str.charAt(i))==-1)
+                    {
                     return false;
+                    }
                     if(str.charAt(i)=='.')
                     dot ++;
                 }
